@@ -1,2 +1,4 @@
 *.heic
 .DS_Store
+art_src/
+gen.py

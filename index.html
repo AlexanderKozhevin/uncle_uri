@@ -53,15 +53,26 @@
   }
   #yearbadge.on{opacity:1;transform:none}
 
+  /* ---------- film grain over the whole site ---------- */
+  body::after{
+    content:'';position:fixed;inset:0;z-index:95;pointer-events:none;opacity:.055;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
   /* ---------- hero ---------- */
   .hero{
     min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;
-    text-align:center;padding:48px 20px 64px;position:relative;
-    background:
-      radial-gradient(1200px 600px at 50% -10%, #232a33 0%, transparent 60%),
-      radial-gradient(800px 500px at 50% 110%, #241c14 0%, transparent 55%),
-      var(--bg);
+    text-align:center;padding:48px 20px 64px;position:relative;overflow:hidden;
+    background:var(--bg);
   }
+  .hero-bg{position:absolute;inset:-12% 0;z-index:0;will-change:transform}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 78%;opacity:.6;display:block}
+  .hero-bg::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(22,18,16,.55) 0%,rgba(22,18,16,.18) 42%,rgba(22,18,16,.6) 78%,var(--bg) 100%);
+  }
+  .hero>:not(.hero-bg){position:relative;z-index:1}
+  .hero>.scroll-hint{position:absolute}
   .hero{width:100%}
   .hero>*{max-width:100%}
   .hero .photo-card{
@@ -190,6 +201,31 @@
   }
   .letter .open:hover{background:#2b2318;color:var(--paper);border-color:#2b2318}
 
+  /* ---------- art dividers (parallax) ---------- */
+  .art{
+    position:relative;margin:56px -20px 10px -46px;height:clamp(240px,52vw,440px);
+    overflow:hidden;
+  }
+  @media(min-width:820px){.art{margin-left:-70px}}
+  .art img{
+    position:absolute;left:0;top:-16%;width:100%;height:132%;
+    object-fit:cover;display:block;will-change:transform;
+  }
+  .art::after{ /* vignette into page bg */
+    content:'';position:absolute;inset:0;
+    box-shadow:inset 0 40px 46px -30px var(--bg), inset 0 -46px 50px -30px var(--bg);
+  }
+  .art .art-cap{
+    position:absolute;right:14px;bottom:12px;z-index:2;
+    font-family:'Caveat',cursive;font-size:18px;color:rgba(240,231,211,.75);
+    text-shadow:0 1px 6px rgba(0,0,0,.8);
+  }
+  .art.fullbleed{margin-top:0}
+  @media (prefers-reduced-motion: reduce){
+    .art img,.hero-bg{transform:none!important}
+    html{scroll-behavior:auto}
+  }
+
   /* ---------- route map ---------- */
   .route-wrap{margin:30px 0;max-width:460px}
   .route-wrap svg{width:100%;height:auto;display:block}
@@ -276,7 +312,8 @@
 
 <!-- ================= HERO ================= -->
 <header class="hero">
-  <div class="photo-card"><img src="photos/IMG_2213.jpg" alt="Юрий Рочев, гвардии десантник. Фергана, 1987 год" onclick="openImg(['photos/IMG_2213.jpg'],'Фергана, декабрь 1987. «Гвардия»')"></div>
+  <div class="hero-bg" id="herobg"><img src="art/hero_bg.jpg" alt=""></div>
+  <div class="photo-card"><img src="photos/sm/IMG_2213.jpg" alt="Юрий Рочев, гвардии десантник. Фергана, 1987 год" onclick="openImg(['photos/IMG_2213.jpg'],'Фергана, декабрь 1987. «Гвардия»')"></div>
   <h1>Письма дяди Юры</h1>
   <p class="sub">Юрий Олегович Рочев родился на Печоре, в селе Окунёво Коми АССР.
   Он писал домой из Ферганы — маме, сестре, брату. Письма сохранились.
@@ -286,6 +323,8 @@
 </header>
 
 <main>
+
+<div class="art fullbleed plx"><img loading="lazy" src="art/div_okunevo.jpg" alt="Село на берегу Печоры, рисунок"><span class="art-cap">Окунёво. Берег Печоры</span></div>
 
 <!-- ================= 1969 ================= -->
 <section class="ch" data-year="1969">
@@ -299,7 +338,7 @@
     фиолетовыми чернилами.</p>
   </div>
   <figure class="doc tilt-l rv">
-    <img loading="lazy" src="photos/IMG_2243.jpg" alt="Свидетельство о рождении на коми и русском языках" onclick="openImg(['photos/IMG_2243.jpg'],'Свидетельство о рождении. Окунёвский сельсовет, 26 июня 1969')">
+    <img loading="lazy" src="photos/sm/IMG_2243.jpg" alt="Свидетельство о рождении на коми и русском языках" onclick="openImg(['photos/IMG_2243.jpg'],'Свидетельство о рождении. Окунёвский сельсовет, 26 июня 1969')">
     <figcaption>Свидетельство о рождении — на коми и русском. Запись № 15, 26 июня 1969 г.</figcaption>
   </figure>
 </section>
@@ -319,11 +358,11 @@
   <span class="who">— деревянный выпускной альбом, 1986</span></div>
   <div class="docs-row">
     <figure class="doc tilt-r rv">
-      <img loading="lazy" src="photos/IMG_2222.jpg" alt="Деревянный выпускной альбом с фотографией школы" onclick="openImg(['photos/IMG_2222.jpg','photos/IMG_2223.jpg'],'Выпускной альбом. Новоборская средняя школа, 1976–1986')">
+      <img loading="lazy" src="photos/sm/IMG_2222.jpg" alt="Деревянный выпускной альбом с фотографией школы" onclick="openImg(['photos/IMG_2222.jpg','photos/IMG_2223.jpg'],'Выпускной альбом. Новоборская средняя школа, 1976–1986')">
       <figcaption>Новоборская школа — фото в выпускном альбоме</figcaption>
     </figure>
     <figure class="doc tilt-l rv">
-      <img loading="lazy" src="photos/IMG_2234.jpg" alt="Аттестат о среднем образовании" onclick="openImg(['photos/IMG_2234.jpg'],'Аттестат о среднем образовании, 26 июня 1986')">
+      <img loading="lazy" src="photos/sm/IMG_2234.jpg" alt="Аттестат о среднем образовании" onclick="openImg(['photos/IMG_2234.jpg'],'Аттестат о среднем образовании, 26 июня 1986')">
       <figcaption>Аттестат — выдан 26 июня 1986 г.</figcaption>
     </figure>
   </div>
@@ -342,11 +381,11 @@
   </div>
   <div class="docs-row">
     <figure class="doc tilt-l rv">
-      <img loading="lazy" src="photos/IMG_2224.jpg" alt="Членский билет ДОСААФ" onclick="openImg(['photos/IMG_2225.jpg','photos/IMG_2224.jpg'],'Членский билет ДОСААФ СССР, вступил 9 апреля 1984')">
+      <img loading="lazy" src="photos/sm/IMG_2224.jpg" alt="Членский билет ДОСААФ" onclick="openImg(['photos/IMG_2225.jpg','photos/IMG_2224.jpg'],'Членский билет ДОСААФ СССР, вступил 9 апреля 1984')">
       <figcaption>Членский билет ДОСААФ — с 9 апреля 1984 г.</figcaption>
     </figure>
     <figure class="doc tilt-r rv">
-      <img loading="lazy" src="photos/IMG_2238.jpg" alt="Удостоверение механизатора сельского хозяйства" onclick="openImg(['photos/IMG_2238.jpg','photos/IMG_2239.jpg'],'Удостоверение механизатора № 16 — тракторист, ДТ-75 и МТЗ')">
+      <img loading="lazy" src="photos/sm/IMG_2238.jpg" alt="Удостоверение механизатора сельского хозяйства" onclick="openImg(['photos/IMG_2238.jpg','photos/IMG_2239.jpg'],'Удостоверение механизатора № 16 — тракторист, ДТ-75 и МТЗ')">
       <figcaption>«Разрешено работать на тракторе типа ДТ-75 и МТЗ»</figcaption>
     </figure>
   </div>
@@ -365,11 +404,11 @@
   </div>
   <div class="docs-row">
     <figure class="doc tilt-r rv">
-      <img loading="lazy" src="photos/IMG_2227.jpg" alt="Билет учащегося СПТУ-30 с фотографией" onclick="openImg(['photos/IMG_2227.jpg'],'Билет учащегося Ухтинского СПТУ-30, октябрь 1986')">
+      <img loading="lazy" src="photos/sm/IMG_2227.jpg" alt="Билет учащегося СПТУ-30 с фотографией" onclick="openImg(['photos/IMG_2227.jpg'],'Билет учащегося Ухтинского СПТУ-30, октябрь 1986')">
       <figcaption>Билет учащегося СПТУ-30. Семнадцать лет</figcaption>
     </figure>
     <figure class="doc tilt-l rv">
-      <img loading="lazy" src="photos/IMG_2230.jpg" alt="Диплом СПТУ-30" onclick="openImg(['photos/IMG_2229.jpg','photos/IMG_2230.jpg','photos/IMG_2228.jpg','photos/IMG_2241.jpg'],'Диплом: водитель категории «С», автослесарь 3-го разряда. Ухта, 1987')">
+      <img loading="lazy" src="photos/sm/IMG_2230.jpg" alt="Диплом СПТУ-30" onclick="openImg(['photos/IMG_2229.jpg','photos/IMG_2230.jpg','photos/IMG_2228.jpg','photos/IMG_2241.jpg'],'Диплом: водитель категории «С», автослесарь 3-го разряда. Ухта, 1987')">
       <figcaption>Диплом: водитель, автослесарь. 5 мая 1987 г.</figcaption>
     </figure>
   </div>
@@ -387,7 +426,7 @@
     Советской Армии»</b>.</p>
   </div>
   <figure class="doc tilt-l rv">
-    <img loading="lazy" src="photos/IMG_2232.jpg" alt="Трудовая книжка с двумя записями" onclick="openImg(['photos/IMG_2231.jpg','photos/IMG_2232.jpg'],'Трудовая книжка. Принят 22.06.1987 — уволен 16.10.1987 в связи с призывом')">
+    <img loading="lazy" src="photos/sm/IMG_2232.jpg" alt="Трудовая книжка с двумя записями" onclick="openImg(['photos/IMG_2231.jpg','photos/IMG_2232.jpg'],'Трудовая книжка. Принят 22.06.1987 — уволен 16.10.1987 в связи с призывом')">
     <figcaption>Трудовая книжка: принят — призван</figcaption>
   </figure>
 </section>
@@ -406,12 +445,13 @@
   Первое письмо от Юры получила 25 ноября 87 г.»
   <span class="who">— записка Анны Павловны, мамы</span></div>
   <figure class="doc tilt-r rv">
-    <img loading="lazy" src="photos/IMG_2235.jpg" alt="Мамина записка-дневник" onclick="openImg(['photos/IMG_2235.jpg'],'Записка Анны Павловны: проводы, первый снег, первое письмо')">
+    <img loading="lazy" src="photos/sm/IMG_2235.jpg" alt="Мамина записка-дневник" onclick="openImg(['photos/IMG_2235.jpg'],'Записка Анны Павловны: проводы, первый снег, первое письмо')">
     <figcaption>Мамин «дневник» — один листок</figcaption>
   </figure>
 </section>
 
 <!-- ================= дорога ================= -->
+<div class="art plx"><img loading="lazy" src="art/div_road.jpg" alt="Поезд в сумеречной степи, рисунок"><span class="art-cap">Двадцать дней пути</span></div>
 <section class="ch" data-year="1987">
   <span class="stamp"></span>
   <div class="rv">
@@ -444,6 +484,7 @@
 </section>
 
 <!-- ================= учебка / письма ================= -->
+<div class="art plx"><img loading="lazy" src="art/div_fergana.jpg" alt="Парашюты над Ферганской долиной на рассвете, рисунок"><span class="art-cap">Небо над Ферганской долиной</span></div>
 <section class="ch" data-year="Фергана">
   <span class="stamp"></span>
   <div class="rv">
@@ -482,11 +523,11 @@
   <div class="hand rv">«Мама, положи фото пока куда-нибудь до моего приезда»</div>
   <div class="docs-row">
     <figure class="doc tilt-l rv">
-      <img loading="lazy" src="photos/IMG_2216.jpg" alt="Фотография Гвардия 1987 с запиской маме" onclick="openImg(['photos/IMG_2216.jpg','photos/IMG_2214.jpg'],'Фото «Гвардия 1987» и записка маме')">
+      <img loading="lazy" src="photos/sm/IMG_2216.jpg" alt="Фотография Гвардия 1987 с запиской маме" onclick="openImg(['photos/IMG_2216.jpg','photos/IMG_2214.jpg'],'Фото «Гвардия 1987» и записка маме')">
       <figcaption>«Гвардия · 1987» — фото, посланное домой</figcaption>
     </figure>
     <figure class="doc tilt-r rv">
-      <img loading="lazy" src="photos/IMG_2221.jpg" alt="Запрос командира части родителям" onclick="openImg(['photos/IMG_2221.jpg'],'Запрос командира в/ч 52788 родителям — просьба прислать характеристику сына')">
+      <img loading="lazy" src="photos/sm/IMG_2221.jpg" alt="Запрос командира части родителям" onclick="openImg(['photos/IMG_2221.jpg'],'Запрос командира в/ч 52788 родителям — просьба прислать характеристику сына')">
       <figcaption>Запрос из части: командир просит родителей прислать характеристику сына.
       Подпись — А.&nbsp;Солуянов, командир ферганского учебного полка, Герой Советского Союза</figcaption>
     </figure>
@@ -536,6 +577,7 @@
 
 <!-- ================= 16 марта ================= -->
 <section class="ch dark-ch" data-year="1988">
+  <div class="art fullbleed plx" style="margin-top:-80px"><img loading="lazy" src="art/div_march.jpg" alt="Конверт в луче холодного света на тёмных досках, рисунок"></div>
   <div class="rv">
     <div class="kicker" style="color:var(--red)">Глава IX</div>
     <h2>16 марта 1988 года</h2>
@@ -550,7 +592,7 @@
     <div class="body" id="tgbody"></div>
   </div>
   <figure class="doc tilt-l rv" style="max-width:420px">
-    <img loading="lazy" src="photos/IMG_2220.jpg" alt="Телеграмма о гибели" onclick="openImg(['photos/IMG_2220.jpg'],'Телеграмма брату Ивану в Москву, 17 марта 1988')">
+    <img loading="lazy" src="photos/sm/IMG_2220.jpg" alt="Телеграмма о гибели" onclick="openImg(['photos/IMG_2220.jpg'],'Телеграмма брату Ивану в Москву, 17 марта 1988')">
     <figcaption>Телеграмма. Штемпель «Москва, 17.3.88»</figcaption>
   </figure>
   <div class="rv">
@@ -578,6 +620,8 @@
     Ниже — весь архив: нажмите на любой снимок, чтобы рассмотреть.</p>
   </div>
   <div class="grid rv" id="grid"></div>
+
+  <div class="art plx" style="margin-bottom:-60px"><img loading="lazy" src="art/div_memory.jpg" alt="Клин белых журавлей в северном ночном небе, рисунок"><span class="art-cap">«…превратились в белых журавлей»</span></div>
 </section>
 
 </main>
@@ -705,7 +749,7 @@ const ARCHIVE=[
 const grid=document.getElementById('grid');
 ARCHIVE.forEach(([f,cap])=>{
   const b=document.createElement('button');
-  b.innerHTML=`<img loading="lazy" src="photos/${f}.jpg" alt="${cap}">`;
+  b.innerHTML=`<img loading="lazy" src="photos/th/${f}.jpg" alt="${cap}">`;
   b.onclick=()=>openImg([`photos/${f}.jpg`],cap);
   grid.appendChild(b);
 });
@@ -779,6 +823,27 @@ new IntersectionObserver((es,o)=>{es.forEach(e=>{
   };
   setTimeout(tick,400);
 })},{threshold:.5}).observe(document.getElementById('tg'));
+
+/* ---------------- parallax ---------------- */
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const plxImgs=[...document.querySelectorAll('.art.plx img')];
+  const heroBg=document.getElementById('herobg');
+  let tick=false;
+  const plx=()=>{
+    tick=false;
+    const vh=innerHeight;
+    if(heroBg&&scrollY<vh*1.2)heroBg.style.transform=`translateY(${scrollY*.28}px)`;
+    for(const img of plxImgs){
+      const r=img.parentElement.getBoundingClientRect();
+      if(r.bottom<-60||r.top>vh+60)continue;
+      const p=(r.top+r.height/2-vh/2)/vh;
+      img.style.transform=`translateY(${(-p*44).toFixed(1)}px)`;
+    }
+  };
+  addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(plx)}},{passive:true});
+  addEventListener('resize',plx);
+  plx();
+}
 
 /* ---------------- counters ---------------- */
 new IntersectionObserver((es,o)=>{es.forEach(e=>{
