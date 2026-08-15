@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Письма дяди Юры · 1969–1988</title>
+<meta name="description" content="История Юрия Рочева, рассказанная его письмами из армии. Окунёво — Ухта — Свердловск — Фергана. 1969–1988.">
+<meta property="og:title" content="Письма дяди Юры">
+<meta property="og:description" content="История одной жизни, рассказанная письмами и документами. Коми АССР — Фергана, 1969–1988.">
+<meta property="og:image" content="https://alexanderkozhevin.github.io/uncle_uri/photos/IMG_2213.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕊️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;700&family=PT+Mono&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root{
+    --bg:#161210;
+    --bg2:#1e1915;
+    --paper:#f0e7d3;
+    --paper2:#e6dbc2;
+    --ink:#2b2318;
+    --txt:#d9cfbc;
+    --dim:#9a8f7c;
+    --sky:#8fb9dc;
+    --sky-deep:#5d8cb4;
+    --red:#c05a41;
+    --rail:#3a322a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--txt);
+    font-family:'PT Serif',Georgia,serif;
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--sky-deep);color:#fff}
+
+  /* ---------- progress ---------- */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--sky-deep),var(--sky));z-index:60}
+
+  /* ---------- year badge ---------- */
+  #yearbadge{
+    position:fixed;right:14px;bottom:14px;z-index:50;
+    font-family:'PT Mono',monospace;font-size:13px;letter-spacing:.15em;
+    color:var(--sky);background:rgba(22,18,16,.82);border:1px solid #3d4b58;
+    padding:6px 12px;border-radius:999px;backdrop-filter:blur(6px);
+    opacity:0;transform:translateY(8px);transition:.4s;pointer-events:none;
+  }
+  #yearbadge.on{opacity:1;transform:none}
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:48px 20px 64px;position:relative;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, #232a33 0%, transparent 60%),
+      radial-gradient(800px 500px at 50% 110%, #241c14 0%, transparent 55%),
+      var(--bg);
+  }
+  .hero{width:100%}
+  .hero>*{max-width:100%}
+  .hero .photo-card{
+    width:min(62vw,300px);
+    transform:rotate(-2.2deg);
+    margin-bottom:34px;
+    animation:float-in 1.2s cubic-bezier(.2,.7,.2,1) both;
+  }
+  @keyframes float-in{from{opacity:0;transform:rotate(-2.2deg) translateY(26px)}to{opacity:1;transform:rotate(-2.2deg) translateY(0)}}
+  .photo-card img{
+    display:block;width:100%;height:auto;
+    border:10px solid #fbf7ee;border-bottom-width:14px;
+    box-shadow:0 12px 34px rgba(0,0,0,.55), 0 2px 8px rgba(0,0,0,.4);
+    border-radius:2px;
+  }
+  .hero h1{
+    font-family:'Caveat',cursive;font-weight:700;
+    font-size:clamp(44px,9vw,76px);color:#f3ead6;line-height:1.05;
+    animation:fade .9s .3s both;
+  }
+  .hero .sub{
+    margin-top:14px;font-size:clamp(15px,3.6vw,19px);color:var(--dim);
+    max-width:min(34em,100%);animation:fade .9s .55s both;
+  }
+  .hero .dates{
+    margin-top:10px;font-family:'PT Mono',monospace;letter-spacing:.28em;
+    color:var(--sky);font-size:14px;animation:fade .9s .7s both;
+  }
+  @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .scroll-hint{
+    position:absolute;bottom:22px;left:50%;transform:translateX(-50%);
+    color:var(--dim);font-size:12px;font-family:'PT Mono',monospace;letter-spacing:.2em;
+    animation:bob 2.2s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+
+  /* ---------- layout / timeline ---------- */
+  main{position:relative;max-width:760px;margin:0 auto;padding:0 20px 40px 46px}
+  main::before{
+    content:'';position:absolute;top:0;bottom:0;left:24px;width:2px;
+    background:linear-gradient(var(--rail),var(--rail));
+  }
+  @media(min-width:820px){
+    main{padding-left:70px}
+    main::before{left:34px}
+  }
+  section.ch{padding:64px 0 26px;position:relative}
+  .stamp{
+    position:absolute;left:-32px;top:76px;width:18px;height:18px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--sky-deep);
+    box-shadow:0 0 0 5px var(--bg);
+  }
+  @media(min-width:820px){.stamp{left:-46px}}
+  .kicker{
+    font-family:'PT Mono',monospace;font-size:12px;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--sky);margin-bottom:10px;
+  }
+  h2{
+    font-size:clamp(26px,6vw,38px);color:#efe6d0;line-height:1.15;margin-bottom:18px;
+    font-weight:700;
+  }
+  .ch p{margin-bottom:14px;max-width:60ch}
+  .ch p b{color:#eee4cd}
+  .muted{color:var(--dim);font-size:15px}
+
+  /* reveal (hidden state only when JS is on) */
+  .rv{transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+  html.js .rv{opacity:0;transform:translateY(26px)}
+  html.js .rv.in{opacity:1;transform:none}
+
+  /* ---------- photos ---------- */
+  figure.doc{margin:26px 0 8px;max-width:520px}
+  figure.doc.tilt-l{transform:rotate(-1.4deg)}
+  figure.doc.tilt-r{transform:rotate(1.2deg)}
+  figure.doc img{
+    display:block;width:100%;height:auto;cursor:zoom-in;
+    border:8px solid #fbf7ee;border-radius:2px;
+    box-shadow:0 10px 26px rgba(0,0,0,.5);
+    transition:transform .35s;
+  }
+  figure.doc img:active{transform:scale(.98)}
+  figure.doc figcaption{
+    font-family:'Caveat',cursive;font-size:19px;color:var(--dim);
+    padding:10px 4px 0;line-height:1.3;
+  }
+  .docs-row{display:flex;gap:18px;flex-wrap:wrap}
+  .docs-row figure.doc{flex:1 1 240px;max-width:340px}
+
+  /* ---------- handwritten quote ---------- */
+  .hand{
+    font-family:'Caveat',cursive;font-size:clamp(24px,5.4vw,32px);line-height:1.35;
+    color:#eadfc6;margin:26px 0;padding-left:18px;border-left:3px solid var(--sky-deep);
+    max-width:30em;
+  }
+  .hand .who{display:block;margin-top:10px;font-size:18px;color:var(--dim)}
+
+  /* ---------- letter cards ---------- */
+  .letter{
+    background:linear-gradient(160deg,var(--paper) 0%,var(--paper2) 100%);
+    color:var(--ink);border-radius:6px;margin:30px 0;
+    box-shadow:0 12px 30px rgba(0,0,0,.45);
+    overflow:hidden;position:relative;
+  }
+  .letter::before{ /* airmail edge */
+    content:'';display:block;height:8px;
+    background:repeating-linear-gradient(-45deg,#b8442f 0 14px,#f3efe4 14px 28px,#39546e 28px 42px,#f3efe4 42px 56px);
+  }
+  .letter .inner{padding:20px 22px 18px}
+  .letter .meta{
+    display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+    font-family:'PT Mono',monospace;font-size:12.5px;letter-spacing:.06em;color:#6d5f49;
+    margin-bottom:10px;
+  }
+  .letter .meta .date{
+    background:#2b2318;color:#f0e7d3;padding:3px 10px;border-radius:3px;letter-spacing:.12em;
+  }
+  .letter h3{font-size:20px;color:#241c12;margin-bottom:8px;line-height:1.3}
+  .letter .quote{
+    font-family:'Caveat',cursive;font-size:clamp(21px,4.8vw,26px);line-height:1.38;color:#33281a;
+  }
+  .letter .open{
+    margin-top:16px;display:inline-flex;align-items:center;gap:8px;
+    font-family:'PT Mono',monospace;font-size:13px;letter-spacing:.1em;
+    background:none;border:1.5px solid #6d5f49;color:#4c4131;border-radius:999px;
+    padding:9px 18px;cursor:pointer;transition:.25s;
+  }
+  .letter .open:hover{background:#2b2318;color:var(--paper);border-color:#2b2318}
+
+  /* ---------- route map ---------- */
+  .route-wrap{margin:30px 0;max-width:460px}
+  .route-wrap svg{width:100%;height:auto;display:block}
+  .route-wrap .lbl{font-family:'PT Mono',monospace;font-size:13px;fill:var(--txt)}
+  .route-wrap .sub{font-family:'PT Serif',serif;font-size:11px;fill:var(--dim)}
+  .route-wrap .pt{fill:var(--bg);stroke:var(--sky);stroke-width:2}
+  #routepath{stroke:var(--sky-deep);stroke-width:2.5;fill:none;stroke-dasharray:6 7}
+  .route-wrap.go #routepath{animation:dashmove 30s linear infinite}
+  @keyframes dashmove{to{stroke-dashoffset:-260}}
+
+  /* ---------- telegram ---------- */
+  section.ch.dark-ch{
+    background:#0d0b0a;margin:60px -20px 0 -46px;padding:80px 20px 80px 46px;
+  }
+  @media(min-width:820px){section.ch.dark-ch{margin-left:-70px;padding-left:70px}}
+  .telegram{
+    background:#efe8d6;color:#241f16;max-width:560px;margin:34px 0;
+    padding:22px 24px 26px;border-radius:2px;
+    box-shadow:0 14px 40px rgba(0,0,0,.6);
+    font-family:'PT Mono',monospace;font-size:clamp(13px,3.4vw,15.5px);
+    line-height:1.8;letter-spacing:.04em;text-transform:uppercase;
+    transform:rotate(-.6deg);
+  }
+  .telegram .head{
+    font-size:11px;color:#7a6f5b;border-bottom:1px dashed #b3a88f;
+    padding-bottom:8px;margin-bottom:14px;letter-spacing:.18em;
+  }
+  .telegram .body::after{content:'▌';animation:blink 1s steps(1) infinite;color:#7a6f5b}
+  .telegram .body.done::after{content:''}
+  @keyframes blink{50%{opacity:0}}
+
+  /* ---------- counters ---------- */
+  .counters{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin:34px 0;max-width:620px}
+  .cnt{
+    border:1px solid #322b23;border-radius:10px;padding:18px 14px;text-align:center;
+    background:linear-gradient(180deg,#1d1813,#161210);
+  }
+  .cnt .n{font-family:'PT Mono',monospace;font-size:clamp(26px,6vw,36px);color:var(--sky);display:block}
+  .cnt .l{font-size:13px;color:var(--dim);display:block;margin-top:6px;line-height:1.4}
+
+  /* ---------- archive grid ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:26px}
+  .grid button{
+    border:none;padding:0;background:#fbf7ee;border-radius:3px;cursor:zoom-in;
+    box-shadow:0 6px 16px rgba(0,0,0,.4);overflow:hidden;
+    aspect-ratio:1;transition:transform .25s;
+  }
+  .grid button:hover{transform:translateY(-3px) rotate(-.6deg)}
+  .grid img{width:100%;height:100%;object-fit:cover;display:block;border:4px solid #fbf7ee;border-radius:3px}
+
+  /* ---------- modal ---------- */
+  #modal{
+    position:fixed;inset:0;z-index:100;display:none;
+    background:rgba(10,8,7,.94);backdrop-filter:blur(4px);
+    overflow-y:auto;-webkit-overflow-scrolling:touch;
+  }
+  #modal.on{display:block}
+  #modal .box{max-width:680px;margin:0 auto;padding:64px 18px 80px}
+  #modal .mtitle{font-family:'PT Mono',monospace;font-size:13px;letter-spacing:.14em;color:var(--sky);margin-bottom:18px;text-transform:uppercase}
+  #modal img{width:100%;height:auto;display:block;border:8px solid #fbf7ee;border-radius:2px;margin-bottom:18px;box-shadow:0 10px 30px rgba(0,0,0,.6)}
+  #modal .transcript{
+    background:var(--paper);color:var(--ink);border-radius:6px;padding:22px 22px;
+    font-family:'Caveat',cursive;font-size:clamp(21px,4.9vw,26px);line-height:1.42;
+    white-space:pre-line;
+  }
+  #modal .tlabel{font-family:'PT Mono',monospace;font-size:11px;letter-spacing:.2em;color:#7a6f5b;display:block;margin-bottom:10px;text-transform:uppercase}
+  #mclose{
+    position:fixed;top:14px;right:14px;z-index:110;
+    width:44px;height:44px;border-radius:50%;border:1px solid #4a4138;
+    background:rgba(22,18,16,.9);color:#e6dbc2;font-size:20px;cursor:pointer;
+  }
+
+  footer{
+    text-align:center;padding:70px 20px 90px;color:var(--dim);font-size:14px;
+    border-top:1px solid #241f19;margin-top:60px;
+  }
+  footer .hand{border:none;padding:0;margin:0 auto 16px;text-align:center;font-size:26px}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="yearbadge">1969</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="photo-card"><img src="photos/IMG_2213.jpg" alt="Юрий Рочев, гвардии десантник. Фергана, 1987 год" onclick="openImg(['photos/IMG_2213.jpg'],'Фергана, декабрь 1987. «Гвардия»')"></div>
+  <h1>Письма дяди Юры</h1>
+  <p class="sub">Юрий Олегович Рочев родился на Печоре, в селе Окунёво Коми АССР.
+  Он писал домой из Ферганы — маме, сестре, брату. Письма сохранились.
+  Это его история — рассказанная ими.</p>
+  <div class="dates">1969 — 1988</div>
+  <div class="scroll-hint">▼ ЛИСТАЙТЕ</div>
+</header>
+
+<main>
+
+<!-- ================= 1969 ================= -->
+<section class="ch" data-year="1969">
+  <span class="stamp"></span>
+  <div class="rv">
+    <div class="kicker">Глава I · с. Окунёво, Коми АССР</div>
+    <h2>Одиннадцатое июня 1969 года</h2>
+    <p>В селе Окунёво Усть-Цилемского района, на нижней Печоре, у Олега Фёдоровича
+    и Анны Павловны Рочевых родился сын Юрий. Семья — коми, и свидетельство о рождении
+    заполнено на двух языках: <b>«Чужöм йылысь свидетельство»</b> — писано от руки,
+    фиолетовыми чернилами.</p>
+  </div>
+  <figure class="doc tilt-l rv">
+    <img loading="lazy" src="photos/IMG_2243.jpg" alt="Свидетельство о рождении на коми и русском языках" onclick="openImg(['photos/IMG_2243.jpg'],'Свидетельство о рождении. Окунёвский сельсовет, 26 июня 1969')">
+    <figcaption>Свидетельство о рождении — на коми и русском. Запись № 15, 26 июня 1969 г.</figcaption>
+  </figure>
+</section>
+
+<!-- ================= 1976-1986 ================= -->
+<section class="ch" data-year="1976">
+  <span class="stamp"></span>
+  <div class="rv">
+    <div class="kicker">Глава II · Новый Бор</div>
+    <h2>Десять школьных лет</h2>
+    <p>С 1976 по 1986 год Юра учился в Новоборской средней школе имени С.&nbsp;М.&nbsp;Черепанова.
+    На выпускной ему подарили самодельный альбом — деревянные дощечки на медных колечках,
+    с выжженной розой и фотографией школы. На дощечке — напутствие:</p>
+  </div>
+  <div class="hand rv">«Не забывай весёлой, шумной школы, не забывай счастливых школьных дней!
+  Не забывай друзей, среди которых проходят годы юности твоей!»
+  <span class="who">— деревянный выпускной альбом, 1986</span></div>
+  <div class="docs-row">
+    <figure class="doc tilt-r rv">
+      <img loading="lazy" src="photos/IMG_2222.jpg" alt="Деревянный выпускной альбом с фотографией школы" onclick="openImg(['photos/IMG_2222.jpg','photos/IMG_2223.jpg'],'Выпускной альбом. Новоборская средняя школа, 1976–1986')">
+      <figcaption>Новоборская школа — фото в выпускном альбоме</figcaption>
+    </figure>
+    <figure class="doc tilt-l rv">
+      <img loading="lazy" src="photos/IMG_2234.jpg" alt="Аттестат о среднем образовании" onclick="openImg(['photos/IMG_2234.jpg'],'Аттестат о среднем образовании, 26 июня 1986')">
+      <figcaption>Аттестат — выдан 26 июня 1986 г.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= 1984-1986 ================= -->
+<section class="ch" data-year="1984">
+  <span class="stamp"></span>
+  <div class="rv">
+    <div class="kicker">Глава III · Земля и техника</div>
+    <h2>Тракторист в пятнадцать лет</h2>
+    <p>В апреле 1984-го, восьмиклассником, Юра вступил в ДОСААФ. При школе окончил
+    курсы механизаторов — и <b>17 июня 1986 года</b>, сразу после выпускного, получил
+    удостоверение механизатора сельского хозяйства: <b>тракторист</b>, допущен к работе
+    на ДТ-75 и МТЗ.</p>
+  </div>
+  <div class="docs-row">
+    <figure class="doc tilt-l rv">
+      <img loading="lazy" src="photos/IMG_2224.jpg" alt="Членский билет ДОСААФ" onclick="openImg(['photos/IMG_2225.jpg','photos/IMG_2224.jpg'],'Членский билет ДОСААФ СССР, вступил 9 апреля 1984')">
+      <figcaption>Членский билет ДОСААФ — с 9 апреля 1984 г.</figcaption>
+    </figure>
+    <figure class="doc tilt-r rv">
+      <img loading="lazy" src="photos/IMG_2238.jpg" alt="Удостоверение механизатора сельского хозяйства" onclick="openImg(['photos/IMG_2238.jpg','photos/IMG_2239.jpg'],'Удостоверение механизатора № 16 — тракторист, ДТ-75 и МТЗ')">
+      <figcaption>«Разрешено работать на тракторе типа ДТ-75 и МТЗ»</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= 1986-87 ================= -->
+<section class="ch" data-year="1986">
+  <span class="stamp"></span>
+  <div class="rv">
+    <div class="kicker">Глава IV · Ухта</div>
+    <h2>Город, училище, права</h2>
+    <p>Осенью 1986-го Юра уехал в Ухту — за 500 с лишним километров от дома — и поступил
+    в СПТУ-30 на улице Советской. Восемь месяцев учёбы: <b>4 мая 1987 года</b> он окончил
+    училище водителем категории «С» и автослесарем 3-го разряда, а в конце мая сдал
+    экзамены в ГАИ и получил права.</p>
+  </div>
+  <div class="docs-row">
+    <figure class="doc tilt-r rv">
+      <img loading="lazy" src="photos/IMG_2227.jpg" alt="Билет учащегося СПТУ-30 с фотографией" onclick="openImg(['photos/IMG_2227.jpg'],'Билет учащегося Ухтинского СПТУ-30, октябрь 1986')">
+      <figcaption>Билет учащегося СПТУ-30. Семнадцать лет</figcaption>
+    </figure>
+    <figure class="doc tilt-l rv">
+      <img loading="lazy" src="photos/IMG_2230.jpg" alt="Диплом СПТУ-30" onclick="openImg(['photos/IMG_2229.jpg','photos/IMG_2230.jpg','photos/IMG_2228.jpg','photos/IMG_2241.jpg'],'Диплом: водитель категории «С», автослесарь 3-го разряда. Ухта, 1987')">
+      <figcaption>Диплом: водитель, автослесарь. 5 мая 1987 г.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= лето 1987 ================= -->
+<section class="ch" data-year="1987">
+  <span class="stamp"></span>
+  <div class="rv">
+    <div class="kicker">Глава V · Лето 1987</div>
+    <h2>Две записи в трудовой</h2>
+    <p>Юра вернулся домой и <b>22 июня 1987 года</b> устроился плотником-бетонщиком
+    2-го разряда в Усть-Цилемский мехучасток «Комиагропромстроя». В его трудовой книжке
+    всего две записи. Вторая, от 16 октября: <b>«Уволен в связи с призывом в ряды
+    Советской Армии»</b>.</p>
+  </div>
+  <figure class="doc tilt-l rv">
+    <img loading="lazy" src="photos/IMG_2232.jpg" alt="Трудовая книжка с двумя записями" onclick="openImg(['photos/IMG_2231.jpg','photos/IMG_2232.jpg'],'Трудовая книжка. Принят 22.06.1987 — уволен 16.10.1987 в связи с призывом')">
+    <figcaption>Трудовая книжка: принят — призван</figcaption>
+  </figure>
+</section>
+
+<!-- ================= проводы ================= -->
+<section class="ch" data-year="1987">
+  <span class="stamp"></span>
+  <div class="rv">
+    <div class="kicker">Глава VI · Проводы</div>
+    <h2>Октябрь 1987. Первый снег</h2>
+    <p>Среди бумаг сохранился листок, на котором Анна Павловна — мама — вела свой короткий дневник
+    той осени. Три строчки:</p>
+  </div>
+  <div class="hand rv">«Юра уехал в армию — 27 октября 1987 г.
+  Первый снег немножко напал 22 октября 1987 г.
+  Первое письмо от Юры получила 25 ноября 87 г.»
+  <span class="who">— записка Анны Павловны, мамы</span></div>
+  <figure class="doc tilt-r rv">
+    <img loading="lazy" src="photos/IMG_2235.jpg" alt="Мамина записка-дневник" onclick="openImg(['photos/IMG_2235.jpg'],'Записка Анны Павловны: проводы, первый снег, первое письмо')">
+    <figcaption>Мамин «дневник» — один листок</figcaption>
+  </figure>
+</section>
+
+<!-- ================= дорога ================= -->
+<section class="ch" data-year="1987">
+  <span class="stamp"></span>
+  <div class="rv">
+    <div class="kicker">Глава VII · Дорога</div>
+    <h2>Двадцать дней до Ферганы</h2>
+    <p>28 октября Юрия призвали в ВС СССР. Команду везли через Свердловск — там десять дней
+    шёл сбор «со всего Союза, и это всё парашютисты». До учебного полка ВДВ в Фергане он
+    добирался в общей сложности двадцать дней — почти три тысячи километров от дома.</p>
+  </div>
+  <div class="route-wrap rv" id="route">
+    <svg viewBox="0 0 420 330" aria-label="Маршрут: Окунёво — Ухта — Свердловск — Фергана">
+      <path id="routepath" d="M84 38 C 150 52, 176 68, 168 96 C 160 124, 210 128, 248 150 C 300 180, 240 210, 258 254 C 268 278, 300 290, 330 296"/>
+      <circle class="pt" cx="84" cy="38" r="6"/>
+      <circle class="pt" cx="168" cy="96" r="5"/>
+      <circle class="pt" cx="248" cy="150" r="6"/>
+      <circle class="pt" cx="330" cy="296" r="7" style="stroke:var(--red)"/>
+      <text class="lbl" x="98" y="34">Окунёво</text>
+      <text class="sub" x="98" y="50">проводы · 27.X</text>
+      <text class="lbl" x="182" y="93">Ухта</text>
+      <text class="sub" x="182" y="109">призван · 28.X</text>
+      <text class="lbl" x="262" y="146">Свердловск</text>
+      <text class="sub" x="262" y="162">сбор, 10 дней</text>
+      <text class="lbl" x="238" y="300">Фергана</text>
+      <text class="sub" x="228" y="316">прибыл · 16.XI.87</text>
+    </svg>
+  </div>
+  <p class="muted rv">Фергана, Узбекская ССР. Войсковая часть 52788 «Б» — учебный
+  парашютно-десантный полк ВДВ. Здесь готовили десантников для всех воздушно-десантных
+  войск страны.</p>
+</section>
+
+<!-- ================= учебка / письма ================= -->
+<section class="ch" data-year="Фергана">
+  <span class="stamp"></span>
+  <div class="rv">
+    <div class="kicker">Глава VIII · Фергана, учебка ВДВ</div>
+    <h2>Письма домой</h2>
+    <p>Шесть месяцев учебки: строевая, прыжки, марши, жара впереди. Обо всём этом —
+    короткие, спокойные письма. Каждое начинается одинаково: <b>«Привет из Ферганы!»</b> —
+    и почти каждое успокаивает: «не переживайте, у меня всё нормально».
+    Нажмите на письмо, чтобы прочитать его целиком.</p>
+  </div>
+
+  <article class="letter rv">
+    <div class="inner">
+      <div class="meta"><span class="date">17.XI.1987</span><span>маме · с. Окунёво</span></div>
+      <h3>«Доехали сюда мы только вчера»</h3>
+      <p class="quote">«Ехал я до своего учебного подразделения в общей сложности 20 дней.
+      Учёба начнётся с 1 декабря и будет длиться 6 месяцев. Служба начинается вроде неплохо…»</p>
+      <button class="open" onclick="openLetter(0)">✉ Читать письмо</button>
+    </div>
+  </article>
+
+  <article class="letter rv">
+    <div class="inner">
+      <div class="meta"><span class="date">18.XII.1987</span><span>маме и всем домашним</span></div>
+      <h3>«23 декабря будут первые прыжки»</h3>
+      <p class="quote">«Готовимся к прыжкам. 23 декабря будут первые прыжки, а остальные —
+      к&nbsp;остальное всё нормально… Всем солдатский привет!»</p>
+      <button class="open" onclick="openLetter(1)">✉ Читать письмо</button>
+    </div>
+  </article>
+
+  <div class="rv">
+    <p style="margin-top:34px">Под Новый год Юра прислал домой фотографию — голубой берет,
+    тельняшка, значок парашютиста-отличника. На обороте — подпись родным, а в конверте записка:</p>
+  </div>
+  <div class="hand rv">«Мама, положи фото пока куда-нибудь до моего приезда»</div>
+  <div class="docs-row">
+    <figure class="doc tilt-l rv">
+      <img loading="lazy" src="photos/IMG_2216.jpg" alt="Фотография Гвардия 1987 с запиской маме" onclick="openImg(['photos/IMG_2216.jpg','photos/IMG_2214.jpg'],'Фото «Гвардия 1987» и записка маме')">
+      <figcaption>«Гвардия · 1987» — фото, посланное домой</figcaption>
+    </figure>
+    <figure class="doc tilt-r rv">
+      <img loading="lazy" src="photos/IMG_2221.jpg" alt="Запрос командира части родителям" onclick="openImg(['photos/IMG_2221.jpg'],'Запрос командира в/ч 52788 родителям — просьба прислать характеристику сына')">
+      <figcaption>Запрос из части: командир просит родителей прислать характеристику сына.
+      Подпись — А.&nbsp;Солуянов, командир ферганского учебного полка, Герой Советского Союза</figcaption>
+    </figure>
+  </div>
+
+  <article class="letter rv">
+    <div class="inner">
+      <div class="meta"><span class="date">26.I.1988</span><span>маме · с. Окунёво</span></div>
+      <h3>«Получил ваши фото — и сразу посылаю обратно»</h3>
+      <p class="quote">«Здесь фото плохо держать — пропадают… У меня всё хорошо. Служба идёт.
+      Здоровьем не жалуюсь. Кормят хорошо. Так что не переживайте».</p>
+      <button class="open" onclick="openLetter(2)">✉ Читать письмо</button>
+    </div>
+  </article>
+
+  <article class="letter rv">
+    <div class="inner">
+      <div class="meta"><span class="date">зима 1988</span><span>маме · с фотографиями</span></div>
+      <h3>«Вчера был последний прыжок с Ан-12»</h3>
+      <p class="quote">«Жив-здоров, чего и вам желаю… Вчера был последний прыжок с Ан-12.
+      Сейчас начнётся вождение… Короче, посылаю фото — ещё 14 штук».</p>
+      <button class="open" onclick="openLetter(3)">✉ Читать письмо</button>
+    </div>
+  </article>
+
+  <article class="letter rv">
+    <div class="inner">
+      <div class="meta"><span class="date">20.II.1988</span><span>сестре Галине · Ухта</span></div>
+      <h3>«Вчера прошли „сотку“»</h3>
+      <p class="quote">«Сейчас у нас начались марши. Вчера прошли „сотку“. 25 февраля будет
+      150-км марш… Как дышится вам, северяне? Мороз, наверно, под 40°? В шубах ходите?»</p>
+      <button class="open" onclick="openLetter(4)">✉ Читать письмо</button>
+    </div>
+  </article>
+
+  <article class="letter rv">
+    <div class="inner">
+      <div class="meta"><span class="date">24.II.1988</span><span>брату Ивану · Москва</span></div>
+      <h3>«Потом — не знаю куда. Наверно, за кордон»</h3>
+      <p class="quote">«Спасибо — получил вашу посылку, фото и открытку к 23 февраля…
+      19/II был 100-км марш. Скоро — 150 км. Потом — не знаю куда. Наверно — за кордон.
+      Потому что ВДВ…»</p>
+      <button class="open" onclick="openLetter(5)">✉ Читать письмо</button>
+    </div>
+  </article>
+</section>
+
+<!-- ================= 16 марта ================= -->
+<section class="ch dark-ch" data-year="1988">
+  <div class="rv">
+    <div class="kicker" style="color:var(--red)">Глава IX</div>
+    <h2>16 марта 1988 года</h2>
+    <p>До конца учебки оставалось около двух месяцев. Письма ждали дома, готовили конверты
+    «по одному», как он просил.</p>
+    <p><b>16 марта 1988 года Юры не стало.</b> Ему было восемнадцать лет. О том, что случилось
+    в Фергане, семейный архив молчит — в нём остались только документы. На следующий день
+    из Окунёва в Москву, брату Ивану, ушла телеграмма:</p>
+  </div>
+  <div class="telegram rv" id="tg">
+    <div class="head">П 01 181515/04 · ОКУНЕВ НОС 8113 29 17/3 1300 · ЗАВЕРЕННАЯ</div>
+    <div class="body" id="tgbody"></div>
+  </div>
+  <figure class="doc tilt-l rv" style="max-width:420px">
+    <img loading="lazy" src="photos/IMG_2220.jpg" alt="Телеграмма о гибели" onclick="openImg(['photos/IMG_2220.jpg'],'Телеграмма брату Ивану в Москву, 17 марта 1988')">
+    <figcaption>Телеграмма. Штемпель «Москва, 17.3.88»</figcaption>
+  </figure>
+  <div class="rv">
+    <p>Юру похоронили в Окунёве — в родном селе, на берегу Печоры, куда он собирался
+    вернуться и «во всём разобраться».</p>
+  </div>
+</section>
+
+<!-- ================= память ================= -->
+<section class="ch" data-year="Память">
+  <span class="stamp"></span>
+  <div class="rv">
+    <div class="kicker">Глава X · Память</div>
+    <h2>Что осталось</h2>
+  </div>
+  <div class="counters rv">
+    <div class="cnt"><span class="n" data-to="18">0</span><span class="l">лет — вся жизнь</span></div>
+    <div class="cnt"><span class="n" data-to="140">0</span><span class="l">дней службы</span></div>
+    <div class="cnt"><span class="n" data-to="3000">0</span><span class="l">км от дома до Ферганы</span></div>
+    <div class="cnt"><span class="n" data-to="39">0</span><span class="l">снимков в семейном архиве</span></div>
+  </div>
+  <div class="rv">
+    <p>Письма, конверты с крокусами и скопой, деревянный школьный альбом, права, трудовая
+    с двумя записями, фотография в голубом берете. Всё это бережно хранится в семье.
+    Ниже — весь архив: нажмите на любой снимок, чтобы рассмотреть.</p>
+  </div>
+  <div class="grid rv" id="grid"></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="hand">Помним.</div>
+  <p>Юрий Олегович Рочев · 11 июня 1969, Окунёво — 16 марта 1988, Фергана</p>
+  <p class="muted" style="margin-top:10px">Сайт собран из писем и документов семейного архива · 2026</p>
+</footer>
+
+<!-- ================= modal ================= -->
+<div id="modal" role="dialog" aria-modal="true">
+  <button id="mclose" onclick="closeModal()" aria-label="Закрыть">✕</button>
+  <div class="box">
+    <div class="mtitle" id="mtitle"></div>
+    <div id="mimgs"></div>
+    <div class="transcript" id="mtext" style="display:none"><span class="tlabel">Расшифровка · фрагменты</span><span id="mtextbody"></span></div>
+  </div>
+</div>
+
+<script>
+/* ---------------- data ---------------- */
+const LETTERS=[
+ {t:'Письмо № 1 · маме · 17 ноября 1987',
+  imgs:['photos/IMG_2208.jpg','photos/IMG_2209.jpg','photos/IMG_2210.jpg'],
+  txt:`Здравствуй, мама! Горячий сыновний привет из Узбекистана!
+Немного о себе. Доехали сюда мы только вчера, т. е. 16 ноября. В Свердловске были 10 дней — просто там сбор был со всего Союза, чтобы отправить уже подготовленную команду, и это всё парашютисты. Короче, ехал я до своего учебного подразделения в общей сложности 20 дней.
+Учёба начнётся с 1 декабря и будет длиться 6 месяцев. Служба начинается вроде неплохо. Кормят неплохо. Всё нормально. О себе пока всё, наверно.
+Как живёте там? Как приезжала мама с Зоей?.. Когда будешь писать — сообщи.
+Мой адрес: 712005, УзССР, г. Фергана-5, в/ч 52788 «Б».
+17/XI-87 г.`},
+ {t:'Письмо № 2 · домой · 18 декабря 1987',
+  imgs:['photos/IMG_2217.jpg','photos/IMG_2218.jpg'],
+  txt:`Привет из Ферганы!
+Здравствуйте, мама и все остальные, кто есть дома! Решил черкнуть пару слов…
+Готовимся к прыжкам. 23 декабря будут первые прыжки. А остальное всё по-нормальному, всё по-старому…
+Недавно получил письмо… буду держать с ними связь.
+Вот пока вроде и всё. Этим закончу свой короткий рассказ.
+Всем солдатский привет. До свидания!
+Всего доброго. Юрий. 18/XII-87 г.`},
+ {t:'Письмо № 3 · маме · 26 января 1988',
+  imgs:['photos/IMG_2219.jpg'],
+  txt:`Привет из Ферганы. Здравствуй, мама!
+Получили фото — и сразу посылаю, чтоб не потерялись. Положи их на место. Потом приеду и разберусь. Здесь фото плохо держать — пропадают, так что вот, получи их.
+Но у меня всё хорошо. Служба идёт. Осталось ещё до конца учебки. Здоровьем не жалуюсь. Погода соответствующая. Кормят хорошо. Так что не переживайте.
+Как получишь фото — сразу ответь. Как живёте? Дела, погода, настроение?
+Короче, пишите. До свидания. Целую, Юрий.
+Посылай по 1 конверту. 26.01.87 [описка: 1988] г.
+На конверте: Коми АССР, Усть-Цилемский р-н, с. Окунево, Центральная 88, Рочевой Анне Павловне. Штемпель Ферганы — 30.01.88.`},
+ {t:'Письмо № 4 · маме · зима 1988, с фотографиями',
+  imgs:['photos/IMG_2215.jpg','photos/IMG_2216.jpg'],
+  txt:`Привет из Ферганы!
+Здравствуй, мама! И все остальные, кто есть дома. С огромным солдатским приветом к вам…
+Жив-здоров, чего и вам желаю. Служба идёт по-тихоньку.
+Вчера был последний прыжок с Ан-12. Сейчас начнётся вождение… Сегодня был марш на 20 [км]. Погода не очень хорошая, но тепло…
+Особых изменений нет. Так что писать нечего о себе.
+Короче, посылаю фото — ещё 14 штук.
+Ну пока. До свидания. Ваш Юрий.
+И записка на отдельном листке: «Мама, положи фото пока куда-нибудь до моего приезда».`},
+ {t:'Письмо № 5 · сестре Галине в Ухту · 20 февраля 1988',
+  imgs:['photos/IMG_2206.jpg','photos/IMG_2207.jpg'],
+  txt:`Привет из Ферганы! Здравствуй, Галина!
+Решил черкнуть пару слов, пока позволяет время, а то всё некогда. Немного о себе.
+Жив-здоров, чего и вам желаю. Служба идёт, до конца учебки осталось два с копейками месяца. Сейчас у нас начались марши. Вчера прошли «сотку». 25 февраля будет 150-км марш.
+Погода немного хандрит. Прохладно. В начале марта уже будет тепло. Потом будет жарко, невыносимо жарко. Посмотрим, как будет дальше. Короче, пока всё нормально.
+Вот вкратце о себе. Конверты больше пока не посылай. Есть. Вера получила от родичей поздравительную.
+Как дышится вам, северяне? Мороз, наверно, под 40°? В шубах ходите? Впрочем, мы здесь тоже в бушлатах ходим, хотя снега нету.
+В Ухте буду — должен шить свою шинель…
+До свидания. Пиши и шли, как раньше, по паре листов в двойном конверте.
+20.02.88 г.`},
+ {t:'Письмо № 6 · брату Ивану в Москву · 24 февраля 1988',
+  imgs:['photos/IMG_2211.jpg','photos/IMG_2212.jpg'],
+  txt:`Привет из Ферганы.
+Здравствуйте, Иван, Римма, Алёша и Галина! С огромным солдатским приветом к вам Юрка.
+Во-первых, спасибо: недавно получил вашу посылку, фото и открытку к 23 февраля. За что большое спасибо. Желательно, фото не слабей, и зачем…
+Немного о себе. Жив-здоров, чего и вам желаю. Погода тёплая…
+Служба продолжается, до конца учебки осталось мало. Сейчас проходят марши. 19/II был 100-км марш. Скоро — 150 км.
+Потом — не знаю куда. Наверно — за кордон. Потому что ВДВ…
+24/II-88 г.`}
+];
+
+const ARCHIVE=[
+ ['IMG_2213','«Гвардия 1987» — фото из Ферганы'],
+ ['IMG_2214','Оборот фото: подпись родным'],
+ ['IMG_2216','Фото и записка маме'],
+ ['IMG_2208','Первое письмо из Ферганы, 17.XI.87'],
+ ['IMG_2209','Первое письмо, страница'],
+ ['IMG_2210','Первое письмо: адрес в/ч 52788 «Б»'],
+ ['IMG_2217','Письмо от 18.XII.87'],
+ ['IMG_2218','Окончание письма 18.XII.87'],
+ ['IMG_2219','Письмо и конверт со скопой, 26.I.88'],
+ ['IMG_2215','Письмо «последний прыжок с Ан-12»'],
+ ['IMG_2206','Письмо Галине и конверт «Крокусы», 20.II.88'],
+ ['IMG_2207','Окончание письма Галине'],
+ ['IMG_2211','Письмо Ивану в Москву, 24.II.88'],
+ ['IMG_2212','Окончание письма Ивану'],
+ ['IMG_2220','Телеграмма, 17.III.88'],
+ ['IMG_2221','Запрос командира части родителям'],
+ ['IMG_2235','Мамина записка-дневник'],
+ ['IMG_2242','Свидетельство о рождении'],
+ ['IMG_2243','Свидетельство о рождении (разворот)'],
+ ['IMG_2222','Выпускной альбом: школа'],
+ ['IMG_2223','Выпускной альбом: 1976–1986'],
+ ['IMG_2233','Аттестат (обложка)'],
+ ['IMG_2234','Аттестат о среднем образовании'],
+ ['IMG_2225','Билет ДОСААФ (обложка)'],
+ ['IMG_2224','Билет ДОСААФ, с 9.IV.1984'],
+ ['IMG_2237','Удостоверение механизатора (обложка)'],
+ ['IMG_2238','Удостоверение механизатора: тракторист'],
+ ['IMG_2239','Удостоверение механизатора (разворот)'],
+ ['IMG_2226','Билет учащегося (обложка)'],
+ ['IMG_2227','Билет учащегося СПТУ-30, Ухта'],
+ ['IMG_2229','Диплом (обложка)'],
+ ['IMG_2230','Диплом СПТУ-30: водитель, автослесарь'],
+ ['IMG_2236','Выписка оценок к диплому'],
+ ['IMG_2228','Свидетельство водителя категории «С»'],
+ ['IMG_2240','Экзаменационная карточка водителя'],
+ ['IMG_2241','Экзаменационная карточка (разворот)'],
+ ['IMG_2231','Трудовая книжка (титул)'],
+ ['IMG_2232','Трудовая книжка: две записи'],
+ ['IMG_2244','Свидетельство о смерти, 16.III.1988']
+];
+
+/* ---------------- archive grid ---------------- */
+const grid=document.getElementById('grid');
+ARCHIVE.forEach(([f,cap])=>{
+  const b=document.createElement('button');
+  b.innerHTML=`<img loading="lazy" src="photos/${f}.jpg" alt="${cap}">`;
+  b.onclick=()=>openImg([`photos/${f}.jpg`],cap);
+  grid.appendChild(b);
+});
+
+/* ---------------- modal ---------------- */
+const modal=document.getElementById('modal');
+function openImg(srcs,title){
+  document.getElementById('mtitle').textContent=title||'';
+  document.getElementById('mimgs').innerHTML=srcs.map(s=>`<img src="${s}" alt="">`).join('');
+  document.getElementById('mtext').style.display='none';
+  show();
+}
+function openLetter(i){
+  const L=LETTERS[i];
+  document.getElementById('mtitle').textContent=L.t;
+  document.getElementById('mimgs').innerHTML=L.imgs.map(s=>`<img src="${s}" alt="">`).join('');
+  document.getElementById('mtextbody').textContent=L.txt;
+  document.getElementById('mtext').style.display='block';
+  show();
+}
+function show(){modal.classList.add('on');modal.scrollTop=0;document.body.style.overflow='hidden'}
+function closeModal(){modal.classList.remove('on');document.body.style.overflow=''}
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+/* ---------------- progress bar ---------------- */
+const prog=document.getElementById('progress');
+addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+},{passive:true});
+
+/* ---------------- reveal ---------------- */
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+  }),{threshold:.12,rootMargin:'0px 0px -5% 0px'});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+}else{
+  document.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
+}
+
+/* ---------------- year badge ---------------- */
+const badge=document.getElementById('yearbadge');
+const chIO=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      badge.textContent=e.target.dataset.year;
+      badge.classList.add('on');
+    }
+  });
+},{rootMargin:'-40% 0px -50% 0px'});
+document.querySelectorAll('section.ch').forEach(s=>chIO.observe(s));
+addEventListener('scroll',()=>{if(scrollY<innerHeight*.5)badge.classList.remove('on')},{passive:true});
+
+/* ---------------- route animation ---------------- */
+const route=document.getElementById('route');
+new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting){route.classList.add('go');o.disconnect()}})},{threshold:.4}).observe(route);
+
+/* ---------------- telegram typewriter ---------------- */
+const TG='ПОГИБ БРАТ ЮРА ПОХОРОНЫ ОКУНЕВО = РОДИТЕЛИ\n\nФАКТ СМЕРТИ РОЧЕВА ЮРИЯ ОЛЕГОВИЧА ЗАВЕРЯЕТ ПРЕДСЕЛЬСОВЕТА ЧУПРОВА · НАЧАЛЬНИК ОТДЕЛЕНИЯ СВЯЗИ ТЕРЕНТЬЕВА';
+const tgbody=document.getElementById('tgbody');
+new IntersectionObserver((es,o)=>{es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  o.disconnect();
+  let i=0;
+  const tick=()=>{
+    tgbody.textContent=TG.slice(0,++i);
+    if(i<TG.length)setTimeout(tick,34);
+    else tgbody.classList.add('done');
+  };
+  setTimeout(tick,400);
+})},{threshold:.5}).observe(document.getElementById('tg'));
+
+/* ---------------- counters ---------------- */
+new IntersectionObserver((es,o)=>{es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  o.disconnect();
+  document.querySelectorAll('.cnt .n').forEach(el=>{
+    const to=+el.dataset.to,t0=performance.now(),dur=1600;
+    const step=t=>{
+      const k=Math.min(1,(t-t0)/dur),ease=1-Math.pow(1-k,3);
+      el.textContent=Math.round(to*ease);
+      if(k<1)requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  });
+})},{threshold:.4}).observe(document.querySelector('.counters'));
+</script>
+</body>
+</html>
